@@ -22,7 +22,7 @@ public class AgeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nickname);
+        setContentView(R.layout.activity_age);
         main.getInfo();
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override

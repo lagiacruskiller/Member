@@ -21,7 +21,7 @@ public class GenderActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nickname);
+        setContentView(R.layout.activity_gender);
         main.getInfo();
         done.setOnClickListener(new View.OnClickListener(){
             @Override
