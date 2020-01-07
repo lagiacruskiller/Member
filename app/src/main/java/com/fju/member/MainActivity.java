@@ -18,19 +18,28 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_nickname);
+        setContentView(R.layout.activity_main);
         findviews();
         arrow.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v){
-                namebox.setText("something");
+                String userid = getSharedPreferences("name", MODE_PRIVATE)
+                        .getString("USER", "");
+                int ageid = Integer.parseInt(getSharedPreferences("age", MODE_PRIVATE)
+                        .getString("AGE", ""));
+                String genderid = getSharedPreferences("gender", MODE_PRIVATE)
+                        .getString("GENDER", "");
+                namebox.setText(userid);
+                age.setText(ageid);
+                gender.setText(genderid);
+
                 if(TextUtils.isEmpty(namebox.getText())) {
                     startActivity(new Intent(MainActivity.this, NicknameActivity.class));
                 }
                 else{
-                    String userid = getSharedPreferences("test", MODE_PRIVATE)
-                            .getString("USER", "");
                     namebox.setText(userid);
+                    age.setText(ageid);
+                    gender.setText(genderid);
                 }
             }
         });
