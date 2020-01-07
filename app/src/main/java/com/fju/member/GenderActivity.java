@@ -12,13 +12,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 public class GenderActivity extends AppCompatActivity {
+    String userid;
+    int ageid;
+    String genderid;
+    MainActivity main;
     ImageView done = findViewById(R.id.done);
     EditText genderbox = findViewById(R.id.gender);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nickname);
-
+        main.getInfo();
         done.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -29,6 +33,7 @@ public class GenderActivity extends AppCompatActivity {
                             .show();
                 }
                 else{
+
                     if(genderbox.getEditableText().toString() == "male"){
                         String gender = genderbox.getEditableText().toString();
                         SharedPreferences pref = getSharedPreferences("gender", MODE_PRIVATE);

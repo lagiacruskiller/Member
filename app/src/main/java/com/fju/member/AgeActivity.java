@@ -14,12 +14,16 @@ import android.widget.ImageView;
 public class AgeActivity extends AppCompatActivity {
     ImageView arrow = findViewById(R.id.arrow);
     EditText agebox = findViewById(R.id.age);
-
+    String userid;
+    int ageid;
+    String genderid;
+    String agestring = Integer.toString(ageid);
+    MainActivity main;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nickname);
-
+        main.getInfo();
         arrow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -34,7 +38,10 @@ public class AgeActivity extends AppCompatActivity {
                     pref.edit()
                             .putString("AGE", age)
                             .commit();
-                    new Intent(AgeActivity.this, NicknameActivity.class);
+                    if(TextUtils.isEmpty(agestring))
+                        startActivity(new Intent(AgeActivity.this, GenderActivity.class));
+                    else
+                        startActivity(new Intent(AgeActivity.this, NicknameActivity.class));
                 }
             }
         });

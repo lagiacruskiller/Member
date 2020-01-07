@@ -12,8 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+    String userid;
+    int ageid;
+    String genderid;
+
     ImageView arrow;
-    TextView namebox, age, gender;
+    TextView namebox, agebox, genderbox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,23 +27,18 @@ public class MainActivity extends AppCompatActivity {
         arrow.setOnClickListener(new Button.OnClickListener(){
             @Override
             public void onClick(View v){
-                String userid = getSharedPreferences("name", MODE_PRIVATE)
-                        .getString("USER", "");
-                int ageid = Integer.parseInt(getSharedPreferences("age", MODE_PRIVATE)
-                        .getString("AGE", ""));
-                String genderid = getSharedPreferences("gender", MODE_PRIVATE)
-                        .getString("GENDER", "");
+                getInfo();
                 namebox.setText(userid);
-                age.setText(ageid);
-                gender.setText(genderid);
+                agebox.setText(ageid);
+                genderbox.setText(genderid);
 
                 if(TextUtils.isEmpty(namebox.getText())) {
                     startActivity(new Intent(MainActivity.this, NicknameActivity.class));
                 }
                 else{
                     namebox.setText(userid);
-                    age.setText(ageid);
-                    gender.setText(genderid);
+                    agebox.setText(ageid);
+                    genderbox.setText(genderid);
                 }
             }
         });
@@ -48,7 +47,15 @@ public class MainActivity extends AppCompatActivity {
     public void findviews(){
         arrow = findViewById(R.id.arrow);
         namebox = findViewById(R.id.namebox);
-        age = findViewById(R.id.agebox);
-        gender = findViewById(R.id.genderbox);
+        agebox = findViewById(R.id.agebox);
+        genderbox = findViewById(R.id.genderbox);
+    }
+    public void getInfo(){
+        String userid = getSharedPreferences("name", MODE_PRIVATE)
+                .getString("USER", "");
+        int ageid = Integer.parseInt(getSharedPreferences("age", MODE_PRIVATE)
+                .getString("AGE", ""));
+        String genderid = getSharedPreferences("gender", MODE_PRIVATE)
+                .getString("GENDER", "");
     }
 }
