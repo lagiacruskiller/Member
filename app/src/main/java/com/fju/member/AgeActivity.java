@@ -17,7 +17,6 @@ public class AgeActivity extends AppCompatActivity {
     String userid;
     int ageid;
     String genderid;
-    String agestring = Integer.toString(ageid);
     MainActivity main;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +37,7 @@ public class AgeActivity extends AppCompatActivity {
                     pref.edit()
                             .putString("AGE", age)
                             .apply();
-                    if(TextUtils.isEmpty(agestring))
+                    if(TextUtils.isEmpty(genderid))
                         startActivity(new Intent(AgeActivity.this, GenderActivity.class));
                     else
                         startActivity(new Intent(AgeActivity.this, NicknameActivity.class));
