@@ -37,7 +37,7 @@ public class AgeActivity extends AppCompatActivity {
                     SharedPreferences pref = getSharedPreferences("age", MODE_PRIVATE);
                     pref.edit()
                             .putString("AGE", age)
-                            .commit();
+                            .apply();
                     if(TextUtils.isEmpty(agestring))
                         startActivity(new Intent(AgeActivity.this, GenderActivity.class));
                     else

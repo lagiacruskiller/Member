@@ -14,11 +14,15 @@ import android.widget.ImageView;
 public class NicknameActivity extends AppCompatActivity {
     ImageView arrow = findViewById(R.id.arrow);
     EditText nickname = findViewById(R.id.nickname);
+    MainActivity main;
+    String userid;
+    int ageid;
+    String genderid;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nickname);
-
+        main.getInfo();
         arrow.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v){
@@ -33,8 +37,11 @@ public class NicknameActivity extends AppCompatActivity {
                     SharedPreferences pref = getSharedPreferences("name", MODE_PRIVATE);
                     pref.edit()
                             .putString("USER", user)
-                            .commit();
-                    new Intent(NicknameActivity.this, AgeActivity.class);
+                            .apply();
+                    if(TextUtils.isEmpty(userid))
+                        startActivity(new Intent(NicknameActivity.this, AgeActivity.class));
+                    else
+                        startActivity(new Intent(NicknameActivity.this, MainActivity.class));
                 }
             }
         });

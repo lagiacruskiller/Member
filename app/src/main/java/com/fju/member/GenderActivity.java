@@ -39,7 +39,7 @@ public class GenderActivity extends AppCompatActivity {
                         SharedPreferences pref = getSharedPreferences("gender", MODE_PRIVATE);
                         pref.edit()
                                 .putString("GENDER", gender)
-                                .commit();
+                                .apply();
                         startActivity(new Intent(GenderActivity.this, AgeActivity.class));
                     }
                     else if(genderbox.getEditableText().toString() == "female"){
@@ -47,7 +47,7 @@ public class GenderActivity extends AppCompatActivity {
                         SharedPreferences pref = getSharedPreferences("gender", MODE_PRIVATE);
                         pref.edit()
                                 .putString("GENDER", gender)
-                                .commit();
+                                .apply();
                         startActivity(new Intent(GenderActivity.this, AgeActivity.class));
                     }
                     else{
